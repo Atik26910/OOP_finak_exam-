@@ -12,8 +12,11 @@ class User:
         self.transaction_history.append(f"{self.email} deposit {amount} taka ")
 
     def withdraw(self, amount):
-        if amount <= self.balance:
+        if self.my_bank.total_balance < amount:
+            print("Bank has not sufficient money")
+        elif amount <= self.balance:
             self.balance -= amount
+            self.my_bank.total_balance -= amount
             self.transaction_history.append(f"You withdrawn: {amount} taka")
         else:
             print(
@@ -135,5 +138,4 @@ admin = my_bank.create_admin_by_email_nid("admin@.com", 9387)
 admin.check_total_bank_balance()
 admin.check_total_loan_amount()
 admin.toggle_loan_feature()
-
 
