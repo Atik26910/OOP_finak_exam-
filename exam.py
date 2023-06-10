@@ -12,11 +12,11 @@ class User:
         self.transaction_history.append(f"{self.email} deposit {amount} taka ")
 
     def withdraw(self, amount):
-        if self.my_bank.total_balance < amount:
+        if my_bank.total_balance < amount:
             print("Bank has not sufficient money")
         elif amount <= self.balance:
             self.balance -= amount
-            self.my_bank.total_balance -= amount
+            my_bank.total_balance -= amount
             self.transaction_history.append(f"You withdrawn: {amount} taka")
         else:
             print(
@@ -121,6 +121,8 @@ ayaan = my_bank.create_user_by_email("ayaan@.com")
 atik.Deposit(5000)
 ayaan.Deposit(4000)
 hasan.Deposit(2000)
+atik.check_available_balance()
+atik.withdraw(1000)
 atik.check_available_balance()
 ayaan.check_available_balance()
 hasan.check_available_balance()
